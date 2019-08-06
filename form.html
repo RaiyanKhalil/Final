@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>form</title>
+</head>
+<body>
+    <H1>New Review</H1>
+    <input type="text" placeholder= "Reviewer Name" id="rName">
+    <br>
+    <br>
+    <input type="text" placeholder="Rating(1 to 5)" id="rRate">
+    <br>
+    <br>
+    <textarea placeholder="Review Comment" id="rComment">
+    <br>
+    <br>
+    <Button id="submit">ADD</Button> 
+
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+
+    <Script>
+        var article = {rName:"", rRate:"", rComment:""};
+        $("#submit").click(function(event){
+            var article = {
+                rName: $("#rName").val(),
+                rRate: $("#rComment").val(),
+                rComment:$("rComment").val()
+            }
+            $.ajax({
+                url: "/article/new",
+                method: "POST",
+                data: article
+            }).done(function(response){
+                console.log(response);
+            }).fail(function(response){
+                console.log(response)
+            })
+        });
+        // $('#getData').click(function(event){
+        //     $.ajax({
+        //         method: "GET",
+        //         url: "./article.ejs"
+        //     }).done(function(response){
+        //         console.log(response);
+        //     }).fail(function(response){
+        //   console.log(response.responseText);
+        //     });
+        // }); 
+    </Script>
+  
+
+</body>
+</html>
